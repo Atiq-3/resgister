@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: bisque
+        }
+
+        #heading {
+            text-align: center;
+            font-size: 35px;
+
+        }
+
+        #parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #child label {
+            font-size: 25px;
+
+        }
+
+        #child input {
+            width: 300px;
+            height: 20px;
+            margin: 20px;
+        }
+
+        #btn {
+            font-size: 25px;
+            text-align: center;
+            width: 200px;
+
+        }
+
+        .button {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="heading"> Resgistation Form</h1>
+    <div id="parent">
+        <div id="child">
+            <label for="">FIRST NAME:<input id="name" type="Name"></label><br>
+            <label for="">LAST NAME:<input id="username" type="username"></label><br>
+            <label for="">PHONE NUMBER:<input id="number" type="tel" maxlength="10"></label><br>
+            <label for="">GMAIL:<input id="mail" type="email"></label><br>
+            <label for="">PASSWORD:<input id="password" type="password"></label><br>
+            <label for="">CONFIRM PASSWORD:<input id="confirm" type="password"></label><br>
+
+        </div>
+    </div>
+    <div class="button">
+        <button id="btn" onclick="fun()">Submit</button>
+    </div>
+</body>
+<script>
+    //  document.getElementById("btn").addEventListener("click", function(event){
+    //     event.preventDefault();
+    // })
+
+
+    function fun() {
+
+        let name = document.getElementById("name").value
+        let username = document.getElementById("username").value
+        let number = document.getElementById("number").value
+        let mail = document.getElementById("mail").value
+        let password = document.getElementById("password").value
+        let con = document.getElementById("confirm").value
+
+
+        if (name == "") {
+            alert("enter your name")
+        } if (username == "") {
+            alert("enter your username")
+        } if (number == "") {
+            alert("enter your number")
+        }
+        if (mail == "") {
+            // console.log(mail.includes("@"))
+            alert("enter your mail")
+        }
+        else if(mail.includes("@")==false){
+            alert("enter your proper mail")
+        }
+        if (password == "") {
+            alert("enter your passowrd")
+        }
+        if (con == "") {
+            alert("enter your confirm")
+        } else if (password != con) {
+            alert("confirm password not match")
+
+        } else {
+            let obj = {
+                name1: name,
+                username1: username,
+                mail1: mail,
+                password1: password,
+                con1: con,
+            }
+            console.log(obj)
+
+            let convToJsonString = JSON.stringify(obj)
+            localStorage.setItem("user1", convToJsonString)
+
+            location.href = "login.html";
+        }
+
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>
